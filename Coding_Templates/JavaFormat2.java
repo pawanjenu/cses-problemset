@@ -32,9 +32,6 @@ class Solution1 {
      * data. Output: Use System.out.println() to write output to file
      */
     private static void solve() throws IOException {
-        int n;
-
-
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
