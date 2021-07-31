@@ -1,10 +1,9 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.File;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings({"Duplicates"})
 class Solution1 {
 
     static final File ip = new File("input.txt");
@@ -33,6 +32,8 @@ class Solution1 {
      * data. Output: Use System.out.println() to write output to file
      */
     private static void solve() throws IOException {
+        int n;
+
 
     }
 
@@ -43,6 +44,7 @@ class Solution1 {
     /**
      * A class for Fast Input
      */
+    @SuppressWarnings("unused")
     static class FastReader {
 
         private final int BUFFER_SIZE = 1 << 24;
@@ -170,11 +172,7 @@ class Solution1 {
 
     }
 
-
-    public interface SpaceCharFilter {
-        public boolean isSpaceChar(int ch);
-    }
-
+    @SuppressWarnings("unused")
     static void sortL(long[] arr) {
         int n = arr.length;
         Random rnd = new Random();

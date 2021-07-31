@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings("Duplicates")
 class Solution {
 
     static final File ip = new File("input.txt");
@@ -42,6 +43,7 @@ class Solution {
     /**
      * A class for Fast Input
      */
+    @SuppressWarnings("unused")
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -100,11 +102,7 @@ class Solution {
         }
     }
 
-
-    public interface SpaceCharFilter {
-        public boolean isSpaceChar(int ch);
-    }
-
+    @SuppressWarnings("unused")
     static void sortL(long[] arr) {
         int n = arr.length;
         Random rnd = new Random();
