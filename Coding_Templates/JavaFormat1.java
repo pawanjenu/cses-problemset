@@ -115,4 +115,29 @@ class Solution {
         Arrays.sort(arr);
     }
 
+    @SuppressWarnings("unused")
+    static void sortI(int[] arr) {
+        int n = arr.length;
+        Random rnd = new Random();
+        for (int i = 0; i < n; ++i) {
+            int tmp = arr[i];
+            int randomPos = i + rnd.nextInt(n - i);
+            arr[i] = arr[randomPos];
+            arr[randomPos] = tmp;
+        }
+        Arrays.sort(arr);
+    }
+
+    @SuppressWarnings("unused")
+    static void sortD(double[] arr) {
+        int n = arr.length;
+        Random rnd = new Random();
+        for (int i = 0; i < n; ++i) {
+            double tmp = arr[i];
+            int randomPos = i + rnd.nextInt(n - i);
+            arr[i] = arr[randomPos];
+            arr[randomPos] = tmp;
+        }
+        Arrays.sort(arr);
+    }
 }
