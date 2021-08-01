@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/1074_Stick_Lengths/1074_Stick_Lengths.iml" filepath="$PROJECT_DIR$/Searching and Sorting/1074_Stick_Lengths/1074_Stick_Lengths.iml" />
       <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/1084_Apartments/1084_Apartments.iml" filepath="$PROJECT_DIR$/Searching and Sorting/1084_Apartments/1084_Apartments.iml" />
       <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/1090_Ferris_Wheel/1090_Ferris_Wheel.iml" filepath="$PROJECT_DIR$/Searching and Sorting/1090_Ferris_Wheel/1090_Ferris_Wheel.iml" />
       <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/1091_Concert_Tickets/1091_Concert_Tickets.iml" filepath="$PROJECT_DIR$/Searching and Sorting/1091_Concert_Tickets/1091_Concert_Tickets.iml" />
@@ -12,8 +13,6 @@
       <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/1643_Maximum_Subarray_Sum/1643_Maximum_Subarray_Sum.iml" filepath="$PROJECT_DIR$/Searching and Sorting/1643_Maximum_Subarray_Sum/1643_Maximum_Subarray_Sum.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coding_Templates/Coding_Templates.iml" filepath="$PROJECT_DIR$/Coding_Templates/Coding_Templates.iml" />
       <module fileurl="file://$PROJECT_DIR$/Guide_to_CP.iml" filepath="$PROJECT_DIR$/Guide_to_CP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/test2/test2.iml" filepath="$PROJECT_DIR$/Searching and Sorting/test2/test2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Searching and Sorting/test3/test3.iml" filepath="$PROJECT_DIR$/Searching and Sorting/test3/test3.iml" />
     </modules>
   </component>
 </project>
