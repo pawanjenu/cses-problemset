@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 @SuppressWarnings({"Duplicates"})
-class Solution1 {
+class Solution {
 
     static final File ip = new File("input.txt");
     static final File op = new File("output.txt");
@@ -32,6 +32,18 @@ class Solution1 {
      * data. Output: Use System.out.println() to write output to file
      */
     private static void solve() throws IOException {
+        int n = in.nextInt();
+        int[] arr = in.fillIntegerArray(n);
+        ArrayList<Integer> towers = new ArrayList<>();
+        towers.add(0, arr[0]);
+        for (int i = 1; i < n; i++) {
+            int up = upperBound(towers, arr[i]);
+            if (up == -1)
+                towers.add(arr[i]);
+            else
+                towers.set(up, arr[i]);
+        }
+        System.out.println(towers.size());
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -175,32 +187,6 @@ class Solution1 {
         Random rnd = new Random();
         for (int i = 0; i < n; ++i) {
             long tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-
-    @SuppressWarnings("unused")
-    static void sortI(int[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            int tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-
-    @SuppressWarnings("unused")
-    static void sortD(double[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            double tmp = arr[i];
             int randomPos = i + rnd.nextInt(n - i);
             arr[i] = arr[randomPos];
             arr[randomPos] = tmp;

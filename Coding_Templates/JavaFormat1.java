@@ -140,4 +140,20 @@ class Solution {
         }
         Arrays.sort(arr);
     }
+    @SuppressWarnings("unused")
+    static int upperBound(ArrayList<Integer> arr, int key) {//returns closest upper or equal value
+        int low = 0, high = arr.size()-1, mid = 0,index;
+        while (low <= high) {
+            mid = low + (high - low) / 2; //essential
+            if (arr.get(mid) <= key) {
+                low = mid + 1;
+            } else if (arr.get(mid) > key) {
+                high = mid - 1;
+            } else {
+                return mid+1;
+            }
+        }
+        index = (arr.get(mid) > key)?mid:(mid + 1);//upper bound index
+        return (index <arr.size())?index:-1;//closest upper or equal value
+    }
 }
