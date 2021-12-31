@@ -10,8 +10,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-@SuppressWarnings({"Duplicates"})
-class Solution1 {
+class Solution {
 
     static final File ip = new File("input.txt");
     static final File op = new File("output.txt");
@@ -39,6 +38,58 @@ class Solution1 {
      * data. Output: Use System.out.println() to write output to file
      */
     private static void solve() throws IOException {
+
+    }
+
+    public int maxProfit(int[] prices) {
+        /*
+        Suppose we have original array:
+        [a0, a1, a2, a3, a4, a5, a6]
+
+        what we are given here(or we calculate ourselves) is:
+        [b0, b1, b2, b3, b4, b5, b6]
+
+        where,
+        b[i] = 0, when i == 0
+        b[i] = a[i] - a[i - 1], when i != 0
+
+        suppose if a2 and a6 are the points that give us the max difference (a2 < a6)
+        then in our given array, we need to find the sum of sub array from b3 to b6.
+
+        b3 = a3 - a2
+        b4 = a4 - a3
+        b5 = a5 - a4
+        b6 = a6 - a5
+
+        adding all these, all the middle terms will cancel out except two
+        i.e.
+
+        b3 + b4 + b5 + b6 = a6 - a2
+
+        a6 - a2 is the required solution.
+
+        so we need to find the largest sub array sum to get the most profit
+         */
+        int max_profit = Integer.MIN_VALUE;
+        int initial_price = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < initial_price) {
+                initial_price = prices[i];
+            }
+            else {
+                max_profit = Math.max(max_profit, prices[i]-initial_price);
+            }
+        }
+        return  max_profit == Integer.MIN_VALUE ? 0 : max_profit;
+    }
+
+    public int maxProfit1(int[] prices) {
+        int maxCur = 0, maxSoFar = 0;
+        for(int i = 1; i < prices.length; i++) {
+            maxCur = Math.max(0, maxCur += prices[i] - prices[i-1]);
+            maxSoFar = Math.max(maxCur, maxSoFar);
+        }
+        return maxSoFar;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -48,7 +99,6 @@ class Solution1 {
     /**
      * A class for Fast Input
      */
-    @SuppressWarnings("unused")
     static class FastReader {
 
         private final int BUFFER_SIZE = 1 << 24;
@@ -176,7 +226,11 @@ class Solution1 {
 
     }
 
-    @SuppressWarnings("unused")
+
+    public interface SpaceCharFilter {
+        public boolean isSpaceChar(int ch);
+    }
+
     static void sortL(long[] arr) {
         int n = arr.length;
         Random rnd = new Random();
@@ -189,58 +243,16 @@ class Solution1 {
         Arrays.sort(arr);
     }
 
-    @SuppressWarnings("unused")
-    static void sortI(int[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            int tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-
-    @SuppressWarnings("unused")
-    static void sortD(double[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            double tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-    @SuppressWarnings("unused")
-    static int upperBound(ArrayList<Integer> arr, int key) {//returns closest upper or equal value
-        int low = 0, high = arr.size()-1, mid = 0,index;
-        while (low <= high) {
-            mid = low + (high - low) / 2; //essential
-            if (arr.get(mid) <= key) {
-                low = mid + 1;
-            } else if (arr.get(mid) > key) {
-                high = mid - 1;
-            } else {
-                return mid+1;
-            }
-        }
-        index = (arr.get(mid) > key)?mid:(mid + 1);//upper bound index
-        return (index <arr.size())?index:-1;//closest upper or equal value
-    }
-
     @ParameterizedTest
     @MethodSource("generateData")
-    public void testSolution(int[] nums,  int output) {
-//        int result = new Solution().maxSubArray(nums);
-//        assertSame(output, result);
-    }
-    static Stream<Arguments> generateData() {
-        return Stream.of(
-                Arguments.of(new int[]{-2,1,-3,4,-1,2,1,-5,4}, 6)
-        );
+    public void testSolution(int[] nums, int output) {
+        int result = new Solution().maxProfit(nums);
+        assertSame(output, result);
     }
 
+    static Stream<Arguments> generateData() {
+        return Stream.of(
+                Arguments.of(new int[]{7,6,4,3,1}, 0)
+        );
+    }
 }

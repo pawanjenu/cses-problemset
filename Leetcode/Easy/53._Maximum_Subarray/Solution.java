@@ -1,7 +1,14 @@
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import java.io.IOException;
 import java.io.File;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 @SuppressWarnings({"Duplicates"})
 class Solution {
@@ -206,6 +213,17 @@ class Solution {
             arr[randomPos] = tmp;
         }
         Arrays.sort(arr);
+    }
+    @ParameterizedTest
+    @MethodSource("generateData")
+    public void testSolution(int[] nums,  int output) {
+        int result = new Solution().maxSubArray(nums);
+        assertSame(output, result);
+    }
+    static Stream<Arguments> generateData() {
+        return Stream.of(
+                Arguments.of(new int[]{-2,1,-3,4,-1,2,1,-5,4}, 6)
+        );
     }
 
 }

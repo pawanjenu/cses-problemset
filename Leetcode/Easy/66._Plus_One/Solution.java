@@ -10,8 +10,6 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-
 @SuppressWarnings("Duplicates")
 class Solution {
 
@@ -122,57 +120,16 @@ class Solution {
         Arrays.sort(arr);
     }
 
-    @SuppressWarnings("unused")
-    static void sortI(int[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            int tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-
-    @SuppressWarnings("unused")
-    static void sortD(double[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            double tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-    @SuppressWarnings("unused")
-    static int upperBound(ArrayList<Integer> arr, int key) {//returns closest upper or equal value
-        int low = 0, high = arr.size()-1, mid = 0,index;
-        while (low <= high) {
-            mid = low + (high - low) / 2; //essential
-            if (arr.get(mid) <= key) {
-                low = mid + 1;
-            } else if (arr.get(mid) > key) {
-                high = mid - 1;
-            } else {
-                return mid+1;
-            }
-        }
-        index = (arr.get(mid) > key)?mid:(mid + 1);//upper bound index
-        return (index <arr.size())?index:-1;//closest upper or equal value
-    }
-
     @ParameterizedTest
     @MethodSource("generateData")
-    public void testSolution(int[] nums,  int output) {
+    public void testSolution(int[] nums, int output) {
 //        int result = new Solution().maxSubArray(nums);
 //        assertSame(output, result);
     }
+
     static Stream<Arguments> generateData() {
         return Stream.of(
-                Arguments.of(new int[]{-2,1,-3,4,-1,2,1,-5,4}, 6)
+                Arguments.of(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}, 6)
         );
     }
 }
