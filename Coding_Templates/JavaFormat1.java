@@ -1,16 +1,14 @@
+import org.json.JSONArray;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.File;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.StringTokenizer;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 @SuppressWarnings("Duplicates")
 class Solution {
@@ -174,5 +172,33 @@ class Solution {
         return Stream.of(
                 Arguments.of(new int[]{-2,1,-3,4,-1,2,1,-5,4}, 6)
         );
+    }
+    public static int[][] convertString2DArray(String input) {
+
+        JSONArray array = new JSONArray(input);
+        int n = array.length();
+        int m = array.getJSONArray(0).length();
+        int[][] op = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            JSONArray innerArray = array.getJSONArray(i);
+            Object[] ob = innerArray.toList().toArray();
+            for (int j = 0; j < innerArray.length(); j++) {
+                op[i][j] = (int) ob[j];
+            }
+
+        }
+        return op;
+
+    }
+
+    public static int[] convertString1DArray(String input) {
+
+        JSONArray array = new JSONArray(input);
+        Object[] ob = array.toList().toArray();
+        int[] arr = new int[array.length()];
+        for (int i = 0; i < array.length(); i++) {
+            arr[i] = (int) ob[i];
+        }
+        return arr;
     }
 }

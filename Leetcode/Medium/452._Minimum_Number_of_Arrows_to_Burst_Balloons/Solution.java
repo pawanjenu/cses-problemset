@@ -4,14 +4,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Stream;
 
-@SuppressWarnings({"Duplicates"})
-class Solution1 {
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+class Solution {
 
     static final File ip = new File("input.txt");
     static final File op = new File("output.txt");
@@ -39,6 +37,24 @@ class Solution1 {
      * data. Output: Use System.out.println() to write output to file
      */
     private static void solve() throws IOException {
+
+    }
+
+    public int findMinArrowShots(int[][] points) {
+        int count = 0;
+        int min_end = Integer.MIN_VALUE;
+
+        Arrays.sort(points, Comparator.comparingInt(a -> a[0]));
+
+        for (int[] point : points) {
+            if (point[0] > min_end) {
+                count++;
+                min_end = point[1];
+            } else {
+                min_end = Math.min(min_end, point[1]);
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -48,7 +64,6 @@ class Solution1 {
     /**
      * A class for Fast Input
      */
-    @SuppressWarnings("unused")
     static class FastReader {
 
         private final int BUFFER_SIZE = 1 << 24;
@@ -176,7 +191,11 @@ class Solution1 {
 
     }
 
-    @SuppressWarnings("unused")
+
+    public interface SpaceCharFilter {
+        public boolean isSpaceChar(int ch);
+    }
+
     static void sortL(long[] arr) {
         int n = arr.length;
         Random rnd = new Random();
@@ -189,57 +208,16 @@ class Solution1 {
         Arrays.sort(arr);
     }
 
-    @SuppressWarnings("unused")
-    static void sortI(int[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            int tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-
-    @SuppressWarnings("unused")
-    static void sortD(double[] arr) {
-        int n = arr.length;
-        Random rnd = new Random();
-        for (int i = 0; i < n; ++i) {
-            double tmp = arr[i];
-            int randomPos = i + rnd.nextInt(n - i);
-            arr[i] = arr[randomPos];
-            arr[randomPos] = tmp;
-        }
-        Arrays.sort(arr);
-    }
-    @SuppressWarnings("unused")
-    static int upperBound(ArrayList<Integer> arr, int key) {//returns closest upper or equal value
-        int low = 0, high = arr.size()-1, mid = 0,index;
-        while (low <= high) {
-            mid = low + (high - low) / 2; //essential
-            if (arr.get(mid) <= key) {
-                low = mid + 1;
-            } else if (arr.get(mid) > key) {
-                high = mid - 1;
-            } else {
-                return mid+1;
-            }
-        }
-        index = (arr.get(mid) > key)?mid:(mid + 1);//upper bound index
-        return (index <arr.size())?index:-1;//closest upper or equal value
-    }
-
     @ParameterizedTest
     @MethodSource("generateData")
-    public void testSolution(int[] nums,  int output) {
-//        int result = new Solution().maxSubArray(nums);
-//        assertSame(output, result);
+    public void testSolution(int[][] nums, int output) {
+        int result = new Solution().findMinArrowShots(nums);
+        assertSame(output, result);
     }
+
     static Stream<Arguments> generateData() {
         return Stream.of(
-                Arguments.of(new int[]{-2,1,-3,4,-1,2,1,-5,4}, 6)
+                Arguments.of(convertString2DArray("[[10,16],[2,8],[1,6],[7,12]]"), 2)
         );
     }
 
