@@ -41,10 +41,14 @@ class Solution {
     }
 
     public int findMinArrowShots(int[][] points) {
+        if (points == null || points.length == 0) return 0;
         int count = 0;
-        int min_end = Integer.MIN_VALUE;
+        int min_end = Integer.MAX_VALUE;
 
-        Arrays.sort(points, Comparator.comparingInt(a -> a[0]));
+        Arrays.sort(points, (a, b) -> {
+            if (a[1] > b[1]) return 1;
+            else return -1;
+        });
 
         for (int[] point : points) {
             if (point[0] > min_end) {
@@ -54,7 +58,7 @@ class Solution {
                 min_end = Math.min(min_end, point[1]);
             }
         }
-        return count;
+        return count + 1;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
