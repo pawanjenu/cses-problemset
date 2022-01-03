@@ -30,6 +30,7 @@
       <module fileurl="file://$PROJECT_DIR$/Leetcode/Medium/547._Number_of_Provinces/547._Number_of_Provinces.iml" filepath="$PROJECT_DIR$/Leetcode/Medium/547._Number_of_Provinces/547._Number_of_Provinces.iml" />
       <module fileurl="file://$PROJECT_DIR$/Leetcode/Easy/66._Plus_One/66._Plus_One.iml" filepath="$PROJECT_DIR$/Leetcode/Easy/66._Plus_One/66._Plus_One.iml" />
       <module fileurl="file://$PROJECT_DIR$/Leetcode/Medium/684._Redundant_Connection/684._Redundant_Connection.iml" filepath="$PROJECT_DIR$/Leetcode/Medium/684._Redundant_Connection/684._Redundant_Connection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Leetcode/Medium/947._Most_Stones_Removed_with_Same_Row_or_Column/947._Most_Stones_Removed_with_Same_Row_or_Column.iml" filepath="$PROJECT_DIR$/Leetcode/Medium/947._Most_Stones_Removed_with_Same_Row_or_Column/947._Most_Stones_Removed_with_Same_Row_or_Column.iml" />
       <module fileurl="file://$PROJECT_DIR$/Coding_Templates/Coding_Templates.iml" filepath="$PROJECT_DIR$/Coding_Templates/Coding_Templates.iml" />
       <module fileurl="file://$PROJECT_DIR$/Guide_to_CP.iml" filepath="$PROJECT_DIR$/Guide_to_CP.iml" />
     </modules>
